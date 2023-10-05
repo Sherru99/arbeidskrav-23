@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const goldCountElem = document.getElementById("gold-count");
-  const metalCountElem = document.getElementById("metal-count");
-  const woodCountElem = document.getElementById("wood-count");
+  const goldCountElem = document.querySelector("#gold-count");
+  const metalCountElem = document.querySelector("#metal-count");
+  const woodCountElem = document.querySelector("#wood-count");
 
   let gold = parseInt(localStorage.getItem("gold")) || 0;
   let metal = parseInt(localStorage.getItem("metal")) || 0;
