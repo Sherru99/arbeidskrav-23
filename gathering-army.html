@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
     />
-    <script defer type="module" src="scripts/gathering-army.js"></script>
+    <script type="module" src="/scripts/gathering-army.js"></script>
   </head>
   <body>
     <div>
@@ -24,10 +24,10 @@
       <a href="your-army.html"> <p>your-army</p> </a>
       <a href="getting-resources.html"><p>getting-resources</p> </a>
     </div>
-    <div>
-      <p>Wood: <span id="wood-count">0</span></p>
-      <p>Gold: <span id="gold-count">0</span></p>
-      <p>Metal: <span id="metal-count">0</span></p>
+    <div id="resource-div">
+      <p id="wood-count">Wood:</p>
+      <p id="gold-count">Gold:</p>
+      <p id="iron-count">Iron:</p>
     </div>
 
     <section id="buyable-warriors" class="row">
