@@ -1,54 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const goldCountElem = document.querySelector("#gold-count");
-  const metalCountElem = document.querySelector("#metal-count");
-  const woodCountElem = document.querySelector("#wood-count");
+import ResourceModule from "/modules/ResourceModule.js";
 
-  let gold = parseInt(localStorage.getItem("gold")) || 0;
-  let metal = parseInt(localStorage.getItem("metal")) || 0;
-  let wood = parseInt(localStorage.getItem("wood")) || 0;
+const woodSection = document.querySelector("#wood-count");
+const goldSection = document.querySelector("#gold-count");
+const ironSection = document.querySelector("#iron-count");
+const resourceDiv = document.querySelector("#resource-div");
 
-  const updateCounts = () => {
-    goldCountElem.textContent = `Gold: ${gold}`;
-    metalCountElem.textContent = `Metal: ${metal}`;
-    woodCountElem.textContent = `Wood: ${wood}`;
-  };
+const showAllResources = () => {
+  const resources = ResourceModule.getAll();
 
-  updateCounts();
+  let htmlTxt = "";
 
-  // ---------------Mining-------------------
+  resources.forEach((resource) => {
+    htmlTxt += `
 
-  document.getElementById("mineImage").addEventListener("click", () => {
-    mineIronGold();
+    <p id="wood-count">>Wood: ${resource.wood}</p>
+    <p id="gold-count">>Gold: ${resource.gold}</p>
+    <p id="iron-count">>Iron: ${resource.iron}</p>
+
+        `;
   });
 
-  const mineIronGold = () => {
-    const isMetal = Math.random() < 0.75;
+  resourceDiv.innerHTML = htmlTxt;
+};
 
-    if (isMetal) {
-      metal += Math.floor(Math.random() * 10) + 1;
-    } else {
-      gold += Math.floor(Math.random() * 5) + 1;
-    }
-
-    // ----------------------------------
-
-    // ---------------Woodcutting-------------------
-
-    updateCounts();
-    localStorage.setItem("gold", gold);
-    localStorage.setItem("metal", metal);
-  };
-
-  document.getElementById("woodImage").addEventListener("click", () => {
-    cutWood();
-  });
-
-  const cutWood = () => {
-    wood += Math.floor(Math.random() * 15) + 1;
-
-    updateCounts();
-    localStorage.setItem("wood", wood);
-  };
-
-  // ----------------------------------
-});
+(() => {
+  showAllResources();
+})();
